@@ -14,4 +14,7 @@ public interface UserService {
 	
 	public void deletarPorId(String id);
 
+	public List<User> obterPorRangeIdade(Integer de, Integer ate);
+	
+	public List<User> obterPorNome(String nome);
 }

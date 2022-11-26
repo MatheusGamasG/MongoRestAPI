@@ -48,4 +48,14 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public List<User> obterPorRangeIdade(Integer de, Integer ate) {
+		return userRep.obterUsuariosPorRangeDeIdade(de, ate);
+	}
+
+	@Override
+	public List<User> obterPorNome(String nome) {
+		return userRep.findByNome(nome);
+	}
+
 }
