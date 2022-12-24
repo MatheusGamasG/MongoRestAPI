@@ -11,6 +11,8 @@ public interface UserService {
 	public User obterPorId(String id);
 	
 	public User salvar(User user);
+
+	public User salvarSemEsposa(User user);
 	
 	public void deletarPorId(String id);
 

@@ -18,7 +18,7 @@ public class User {
 	private String nome;
 	private Integer idade;
 	private String profissao;
-	// O DBRef vai criar, a nível da coleção do Mongo, um capmo de referência a um "id" e uma "coleção".
+	// O DBRef vai criar, a nível da coleção do Mongo, um campo de referência a um "id" e uma "coleção".
 	// Pode ser tanto a mesma coleção da entidade, como é este caso, como também pode ser uma outra coleção no database.
 	@DBRef
 	private User esposa;	

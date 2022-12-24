@@ -1,7 +1,9 @@
 package com.mongodb.service.impl;
 
 import java.util.List;
+import java.util.Objects;
 
+import com.mongodb.repository.UserRepositoryRaiz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserRepository userRep;
+
+	@Autowired
+	private UserRepositoryRaiz userRepRaiz;
 
 	@Override
 	public List<User> obterTodos() {
@@ -29,12 +34,18 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User salvar(User user) {
-		User esposa = userRep
-						.findById(user.getEsposa().getId())
-						.orElseThrow(() -> new RuntimeException("Esposa não encontrada."));
-		
-		user.setEsposa(esposa);
+		if(Objects.nonNull(user.getEsposa())) {
+			User esposa = userRep
+					.findById(user.getEsposa().getId())
+					.orElseThrow(() -> new RuntimeException("Esposa não encontrada."));
+			user.setEsposa(esposa);
+		}
+
 		return userRep.save(user);
+	}
+
+	public User salvarSemEsposa(User user) {
+		return userRepRaiz.saveUser(user);
 	}
 
 	@Override

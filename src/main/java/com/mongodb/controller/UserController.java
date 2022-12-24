@@ -40,7 +40,7 @@ public class UserController {
 		return userServiceImpl.obterPorRangeIdade(de, ate);		
 	}
 	
-	@GetMapping("/byname")
+	@GetMapping("/byName")
 	public List<User> buscarPorNome(@RequestParam String nome) {
 		return userServiceImpl.obterPorNome(nome);
 	}
@@ -49,6 +49,12 @@ public class UserController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public User salvarUsuario(@RequestBody User user) {
 		return userServiceImpl.salvar(user);
+	}
+
+	@PostMapping("/noWife")
+	@ResponseStatus(HttpStatus.CREATED)
+	public User salvarUsuarioSemEsposa(@RequestBody User user) {
+		return userServiceImpl.salvarSemEsposa(user);
 	}
 	
 	@DeleteMapping("/{id}")
